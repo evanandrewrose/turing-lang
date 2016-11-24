@@ -12,17 +12,17 @@ def clean_string(string):
 
 def get_rule(tape, rules, state, position):
     """ Returns a rule.
-    
+
     Rule determined by the given state and position, selected out of
-    the given rules list and from the given tape. 
-    
+    the given rules list and from the given tape.
+
     """
     if position > len(tape) - 1:
         tape.append('b')
     if position < 0:
         tape.insert(0, 'b')
         position = 0
-    
+
     for rule in rules:
         rule_state = rule[0]
         rule_symbol = rule[1]
@@ -79,13 +79,13 @@ def remove_blanks(tape):
 
 def get_args():
     """ Returns the file and verbosity switch from args. """
-    parser = argparse.ArgumentParser(description='Compute' + 
+    parser = argparse.ArgumentParser(description='Compute' +
         'a turing language program')
-    parser.add_argument('file', 
-                        metavar='f', 
+    parser.add_argument('file',
+                        metavar='f',
                         help='file where program is stored',
                         type=str)
-    parser.add_argument('--verbose', 
+    parser.add_argument('--verbose',
                         default=False,
                         help='show steps',
                         action='store_true')
