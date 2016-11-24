@@ -59,14 +59,14 @@ def compute(tape, rules):
     while (halt==False):
         file, verbose = get_args()
         if verbose:
-            print "Tape", tape, "Position:", position, "State", state
+            print("Tape", tape, "Position:", position, "State", state)
         rule, position = get_rule(tape, rules, state, position)
         if (rule != None):
             tape, position, state = use_rule(tape, rule, state, position)
         else:
             halt = True
     if verbose:
-        print ""
+        print("")
     if state == "a":
         accepted = True
     return tape, accepted
@@ -98,7 +98,7 @@ def extract_contents():
     tape = None
     rules = []
     file_name, verbose = get_args()
-    print file_name
+    print(file_name)
     file = open(file_name, 'r')
 
     for line in file:
@@ -114,22 +114,22 @@ def extract_contents():
 def print_rules(rules):
     """ Prints formatted rules. """
     for index, rule in enumerate(rules):
-        print "Rule #" + str(index+1) + ": " + str(rule)
+        print("Rule #" + str(index+1) + ": " + str(rule))
 
 def main():
     """ Prints results from computing the given turing program. """
     tape, rules = extract_contents()
-    print "Original Tape: " + str(tape)
-    print ""
+    print("Original Tape: " + str(tape))
+    print("")
     print_rules(rules)
-    print ""
+    print("")
     tape, accepted = compute(tape, rules)
     tape = remove_blanks(tape)
 
-    print "Result tape: " + str(tape)
+    print("Result tape: " + str(tape))
     if accepted:
-        print "(accepted)"
+        print("(accepted)")
     else:
-        print "(not accepted)"
+        print("(not accepted)")
 
 main()
